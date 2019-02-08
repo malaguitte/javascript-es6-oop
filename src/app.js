@@ -1,22 +1,20 @@
 class Vehicle {
-    constructor(licenseNumber) {
-        console.log('constructing Vehicle');
-        this.licenseNumber = licenseNumber;
+    constructor() {
+       this.gpsEnabled = true;
     }
 }
 
 class Drone extends Vehicle {
-}
-
-class Car extends Vehicle {
-    constructor(licenseNumber) {
-        // super(); //This is required in JS
-        super(licenseNumber);
-        console.log('constructing Car');
+    constructor() {
+        super();
     }
 }
 
-let c = new Car();
-console.log(c instanceof Car); //true
-console.log(c instanceof Vehicle); //true
-console.log(c instanceof Object); //true
+class Car extends Vehicle {
+    constructor() {
+        super();
+    }
+}
+
+let car = new Car();
+console.log(car.gpsEnabled)
