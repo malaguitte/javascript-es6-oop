@@ -1,23 +1,16 @@
 class Drone {
     constructor(id, name) {
-        this.id = id;
-        this.name = name;
+        this._id = id;
     }
-    //method attached to the class
-    static getCompany() {
-        console.log('getCompany method has been called');
+    get id() {
+        return this._id;
     }
-    //method for the instance
-    fly() {
-        console.log(`Drone ${this.id} is flying`);
+    set id(newId) {
+        this._id = newId;
     }
 }
 
-let drone = new Drone('A123', 'Flyer');
-let drone2 = new Drone('B456', 'Twirl');
-
-drone.fly();
-drone2.fly();
-
-// drone.getCompany(); // error
-Drone.getCompany();
+let drone = new Drone("A123");
+console.log(`Drone id: ${drone.id}`);
+drone.id = 'B456';
+console.log(`Drone id: ${drone.id}`);
