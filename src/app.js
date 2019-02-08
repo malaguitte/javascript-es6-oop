@@ -1,20 +1,25 @@
 class Vehicle {
-    constructor() {
-       this.gpsEnabled = true;
+    start() {
+        console.log('Starting Vehicle');
+    }
+    static getCompanyName() {
+        console.log('My Company');
     }
 }
 
-class Drone extends Vehicle {
-    constructor() {
-        super();
-    }
-}
 
 class Car extends Vehicle {
-    constructor() {
-        super();
+    start() {
+        console.log('Starting Car');
+        super.start(); //calls parent's start() method
+    }
+    static getCompanyName() {
+        super.getCompanyName();
+        console.log('My Other Company');
     }
 }
 
 let car = new Car();
-console.log(car.gpsEnabled)
+car.start();
+Car.getCompanyName(); //works fine
+car.getCompanyName(); // error
