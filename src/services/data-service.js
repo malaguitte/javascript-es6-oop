@@ -14,11 +14,27 @@ export class DataService {
     for (let item of data) {
       
       if (item.type === 'drone') {
-        let drone = this.loadDrone(item);
-        this.drones.push(drone);
+        
+        if (this.validateDroneData(item)) {
+          let drone = this.loadDrone(item);
+          this.drones.push(drone);
+        } else {
+          let error = new Error('Invalid drone data', item);
+          this.errors.push(error);
+        }
+        
       } else if (item.type === 'car') {
-        let car = this.loadCar(item);
-        this.cars.push(car);
+        
+        if (this.isCarDataValid(item)) {
+          let car = this.loadCar(item);
+          if (car) {
+            this.cars.push(car);
+          }
+        } else {
+          let error = new Error('Invalid car data', item);
+          this.errors.push(error);
+        }
+
       } else {
         let error = new Error('Invalid vehicle type', item);
         this.errors.push(error);
@@ -49,6 +65,26 @@ export class DataService {
       this.errors.push(new Error('Error loading drone', droneData));
     }
     return null;    
+  }
+
+  isCarDataValid(carData) {
+    let requiredProperties = 'license model latLong miles make'.split(' ');
+    requiredProperties.forEach((property) => {
+      if (!carData[property]) {
+        this.errors.push(new Error(`Missing property ${property} for the car's data`, carData));
+        return false;
+      }
+    });
+    if (Number.isNaN(Number.parseFloat(carData.miles))) {
+      this.errors.push(new Error(`Invalid miles value '${carData.miles}' for the car`, carData));
+      return false;
+    }
+    return true;
+  }
+  
+  validateDroneData(droneData) {
+    let requiredProperties = 'license model latLong miles make'.split(' ');  
+    return true;
   }
   
 
