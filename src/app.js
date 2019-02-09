@@ -17,3 +17,7 @@ for (let drone of dataService.drones) {
 for (let car of dataService.cars) {
   console.log(car.make);
 }
+
+for (let error of dataService.errors) {
+  console.log(error.message);
+}

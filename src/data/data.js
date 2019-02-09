@@ -54,5 +54,13 @@ export let data = [
       model: 'Pick U Up',
       miles: '400',
       latLong: '40.774036 -73.967319'
+  },
+  {
+      license: 'AT4000',
+      type: 'car_invalidtype',
+      make: 'Lyft',
+      model: 'Pick U Up',
+      miles: '400',
+      latLong: '40.774036 -73.967319'
   }
 ];
