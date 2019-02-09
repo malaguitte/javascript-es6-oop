@@ -12,12 +12,28 @@ export class DataService {
     for (let item of data) {
       
       if (item.type === 'drone') {
-        this.drones.push(item);
+        let drone = this.loadDrone(item);
+        this.drones.push(drone);
       } else if (item.type === 'car') {
-        this.cars.push(item);
+        let car = this.loadCar(item);
+        this.cars.push(car);
       } 
 
     }
+  }
+
+  loadCar(carData) {
+    let car   = new Car(carData.license, carData.model, carData.latLong);
+    car.miles = carData.miles;
+    car.make  = carData.make;
+    return car;
+  }
+
+  loadDrone(droneData) {
+    let drone           = new Drone(droneData.license, droneData.model, droneData.latLong);
+    drone.airTimeHours  = droneData.airTimeHours;
+    drone.base          = droneData.base;
+    return drone;
   }
   
 
