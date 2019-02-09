@@ -15,9 +15,11 @@ export class DataService {
       
       if (item.type === 'drone') {
         
-        if (this.validateDroneData(item)) {
+        if (this.isDroneDataValid(item)) {
           let drone = this.loadDrone(item);
-          this.drones.push(drone);
+          if (drone) {
+            this.drones.push(drone);
+          }
         } else {
           let error = new Error('Invalid drone data', item);
           this.errors.push(error);
@@ -82,8 +84,18 @@ export class DataService {
     return true;
   }
   
-  validateDroneData(droneData) {
-    let requiredProperties = 'license model latLong miles make'.split(' ');  
+  isDroneDataValid(droneData) {
+    let requiredProperties = 'license model latLong airTimeHours base'.split(' ');
+    requiredProperties.forEach((property) => {
+      if (!droneData[property]) {
+        this.errors.push(new Error(`Missing property ${property} for the drone's data`, droneData));
+        return false;
+      }
+    });
+    if (Number.isNaN(Number.parseFloat(droneData.airTimeHours))) {
+      this.errors.push(new Error(`Invalid airTimeHours value '${droneData.airTimeHours}' for the drone`, droneData));
+      return false;
+    }
     return true;
   }
   

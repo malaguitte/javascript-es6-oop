@@ -23,6 +23,14 @@ export let data = [
       base: 'New York',
       latLong: '40.779423 -73.969411'
   },
+//   {
+//       license: 'QRS678',
+//       type: 'drone',
+//       model: 'Google 3800',
+//       airTimeHours: '300',
+//     //   base: 'New York',
+//       latLong: '40.779423 -73.969411'
+//   },
   {
       license: 'AT9900',
       type: 'car',
@@ -63,12 +71,12 @@ export let data = [
 //       miles: '400',
 //       latLong: '40.774036 -73.967319'
 //   },
-  {
-      license: 'AT4000',
-      type: 'car',
-      make: 'Lyft',
-      model: 'Pick U Up',
-      miles: 'aaa400',
-      latLong: '40.774036 -73.967319'
-  }
+//   {
+//       license: 'AT4000',
+//       type: 'car',
+//       make: 'Lyft',
+//       model: 'Pick U Up',
+//       miles: 'aaa400',
+//       latLong: '40.774036 -73.967319'
+//   }
 ];
