@@ -98,6 +98,26 @@ export class DataService {
     }
     return true;
   }
+
+  getCarByLicense(license) {
+    return this.cars.find( (car) => car.license === license );
+  }
+
+  getCarsSortedByLicense() {
+    return this.cars.sort((car1, car2) => {
+      if (car1.license < car2.license) {
+        return -1;
+      }
+      if (car1.license > car2.license) {
+        return 1;
+      }
+      return 0;
+    })
+  }
+
+  filterCarsByMake(filter) {
+    return this.cars.filter((car) => car.make.indexOf(filter) >= 0);
+  }
   
 
 }
