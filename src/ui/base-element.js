@@ -1,5 +1,3 @@
-import $ from jQuery;
-
 export class BaseElement {
   constructor() {
     this.element = null; //jquery object
