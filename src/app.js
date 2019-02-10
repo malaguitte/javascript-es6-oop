@@ -8,6 +8,11 @@ export class App extends ApplicationBase {
     super(title);
     this.dataService = new DataService();
     this.dataService.loadData(data);
+
+    this.addRoute('Home', null, true);
+    this.addRoute('Cars', null);
+    this.addRoute('Drones', null);
+    this.addRoute('Map', null);
   }
   
 }
