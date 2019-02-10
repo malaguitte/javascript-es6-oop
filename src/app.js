@@ -5,14 +5,18 @@ import {DataService} from './services/data-service.js';
 import {Button} from './ui/button.js';
 import {Image} from './ui/image.js';
 import {TitleBar} from './ui/title-bar.js';
+import {DataTable} from './ui/data-table.js';
 
 
 let dataService = new DataService();
 dataService.loadData(data);
 
-let titleBar = new TitleBar('My Application');
-titleBar.addLink('Home', '');
-titleBar.addLink('Cars', '');
-titleBar.addLink('Drones', '');
-titleBar.addLink('Map', '');
-titleBar.appendToElement($('body'));
+let headers = [];
+headers.push('License');
+headers.push('Make');
+headers.push('Model');
+headers.push('Miles');
+let cars = dataService.cars;
+let table = new DataTable(headers, cars);
+
+table.appendToElement($('body'));
