@@ -17,7 +17,7 @@ export class TitleBar extends BaseElement {
   getLinksHtml() {
     let linksHtml = '';
     this.links.forEach((link) => {
-      linksHtml += `<a class="mdl-navigation__link" href="${link.href}">${link.title}</a>`
+      linksHtml += `<a class="mdl-navigation__link">${link.title}</a>`
     });
     return linksHtml;
   }
