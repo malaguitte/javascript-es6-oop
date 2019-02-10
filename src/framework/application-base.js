@@ -11,13 +11,22 @@ export class ApplicationBase {
 
   show(element) {
     this.TitleBar.appendToElement(element);
+    if (this.defaultRoute) {
+      this.activateRoute(this.defaultRoute);
+    }
+  }
+
+  activateRoute(route) {
+    let content = this.TitleBar.element.find('.page-content');
+    content.empty();
+    this.routeMap[route].appendToElement(content);
   }
 
   addRoute(id, pageObject, defaultRoute = false) {
     this.TitleBar.addLink(id, '');
     this.routeMap[id] = pageObject;
-    this.defaultRoute = (defaultRoute) ? id : null;
-
+    if (defaultRoute) {
+      this.defaultRoute = id;
+    }
   }
-
 }
